@@ -150,4 +150,16 @@
       UpdateId = #{updateId,jdbcType=INTEGER}
     where Id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getEmployeeByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from employee
+    where Name = #{name, jdbcType=VARCHAR}
+  </select>
+  <select id="getEmployeeByAge" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    where Age = #{age, jdbcType=INTEGER}
+  </select>
 </mapper>

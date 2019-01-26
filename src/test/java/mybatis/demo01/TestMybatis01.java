@@ -1,4 +1,4 @@
-package mybatis;
+package mybatis.demo01;
 
 import com.wangbodang.demo.entity.Employee;
 import com.wangbodang.demo.mapper.EmployeeMapper;
@@ -12,9 +12,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-public class MybatisTest {
-
+public class TestMybatis01 {
     SqlSession sqlSession =null;
 
     @Before
@@ -36,41 +36,30 @@ public class MybatisTest {
         }
     }
 
-    /**
-     * 测试原生的mybatis框架
-     */
     @Test
-    public void mybatisTest(){
-        String resource = "conf/mybatis-config.xml";
-        InputStream inputStream = null;
-        try {
-            inputStream = Resources.getResourceAsStream(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+    public void testUseMybatis(){
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
-        Employee emp = new Employee();
-        //emp.setId(11003);
-        emp.setName("奇国远");
-        emp.setAge(34);
-        //employeeMapper.insert(emp);
-        //System.out.println("->插入的记录id:"+emp.getId());
-        sqlSession.commit();
-
-        System.out.println("\n----------------------------------------------\n");
-
         Employee employee = employeeMapper.selectByPrimaryKey(11001);
         System.out.println(employee);
-        sqlSession.close();
     }
+
     /**
-     * 原生的mybatis框架使用连接池
+     * 测试一个参数时不加@Param
      */
     @Test
-    public void myBatisWithDbcpTest(){
+    public void testParamConvert(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        List<Employee> employeeList = employeeMapper.getEmployeeByName("王伯当");
+        System.out.println(employeeList.get(0));
+    }
 
-
+    /**
+     * 测试一个参数时不加@Param
+     */
+    @Test
+    public void testParamConvert2(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        List<Employee> employeeList = employeeMapper.getEmployeeByAge(34);
+        System.out.println(employeeList.get(0));
     }
 }

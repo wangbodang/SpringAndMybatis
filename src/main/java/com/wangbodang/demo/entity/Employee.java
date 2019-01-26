@@ -14,6 +14,8 @@ public class Employee {
 
     private Integer gender;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")//页面写入数据库时格式化
+    //@JSONField(format="yyyy-MM-dd")//数据库导出页面时json格式化
     private Date hiredate;
 
     private BigDecimal salary;
@@ -119,3 +121,53 @@ public class Employee {
                 '}';
     }
 }
+
+/*
+
+
+--Create Table
+
+CREATE TABLE `employee_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
+  `gender` varchar(1) DEFAULT NULL,
+  `salary` double DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `hiredatePeriod` varchar(6) DEFAULT NULL,
+  `remark` varchar(150) DEFAULT NULL,
+  `summary` varchar(150) DEFAULT NULL,
+  `decimalNumber` decimal(20,6) DEFAULT NULL,
+  `idcard` varchar(18) DEFAULT NULL COMMENT '身份证号',
+  `birthday` varchar(10) DEFAULT NULL,
+  `gendercn` varchar(1) DEFAULT NULL COMMENT '性别',
+  `officedate` varchar(10) DEFAULT NULL COMMENT '入职日期',
+  `testdate` varchar(10) DEFAULT NULL COMMENT '测试数据',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41034 DEFAULT CHARSET=utf8 COMMENT='Emp 测试表'
+
+
+
+Create Table
+
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
+  `gender` varchar(1) DEFAULT NULL,
+  `salary` double DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `hiredatePeriod` varchar(6) DEFAULT NULL,
+  `remark` varchar(150) DEFAULT NULL,
+  `summary` varchar(150) DEFAULT NULL,
+  `decimalNumber` decimal(20,6) DEFAULT NULL,
+  `idcard` varchar(18) DEFAULT NULL COMMENT '身份证号',
+  `birthday` varchar(10) DEFAULT NULL,
+  `gendercn` varchar(1) DEFAULT NULL COMMENT '性别',
+  `officedate` varchar(10) DEFAULT NULL COMMENT '入职日期',
+  `testdate` varchar(10) DEFAULT NULL COMMENT '测试数据',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41034 DEFAULT CHARSET=utf8 COMMENT='Emp 测试表'
+
+
+*/

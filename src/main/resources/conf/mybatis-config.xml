@@ -9,10 +9,13 @@
         <setting name="useGeneratedKeys" value="true"/>
         <!--<setting name="logImpl" value="LOG4J2"></setting>-->
     </settings>
-
     <typeAliases>
         <typeAlias alias="emp" type="com.wangbodang.demo.entity.Employee"/>
     </typeAliases>
+    <!--<typeHandlers>
+        <typeHandler handler="com.wangbodang.common.mybatis.DateConvertTypeHandler" javaType="java.lang.String" jdbcType="DATE"/>
+        <typeHandler handler="DateOnlyTypeHandler" javaType="java.lang.String" jdbcType="DATE"/>
+    </typeHandlers>-->
 
     <plugins>
         <plugin interceptor="com.wangbodang.common.mybatis.ExamplePlugin">
