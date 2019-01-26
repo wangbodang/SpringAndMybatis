@@ -1,3 +1,1 @@
-# SpringAndMybatis
-TestJdbcAndMybatis
 使用Spring和Mybatis的Demo
