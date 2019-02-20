@@ -69,6 +69,7 @@
 
         <root level="trace">
             <appender-ref ref="Console"/>
+            <appender-ref ref="log"/>
         </root>
 
     </loggers>
