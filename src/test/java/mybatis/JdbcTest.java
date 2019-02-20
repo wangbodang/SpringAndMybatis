@@ -8,6 +8,12 @@ public class JdbcTest {
 
     /**
      * 使用原生的jdbc连接数据库
+     *
+     String driver = "oracle.jdbc.driver.OracleDriver";
+     String url = "jdbc:oracle:thin:@192.168.0.112:1521:orcl";
+     String user = "system";
+     String pwd = "yskj666";
+
      */
     @Test
     public void testJdbc(){
