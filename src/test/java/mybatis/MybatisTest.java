@@ -41,15 +41,7 @@ public class MybatisTest {
      */
     @Test
     public void mybatisTest(){
-        String resource = "conf/mybatis-config.xml";
-        InputStream inputStream = null;
-        try {
-            inputStream = Resources.getResourceAsStream(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
         Employee emp = new Employee();
         //emp.setId(11003);
@@ -72,5 +64,28 @@ public class MybatisTest {
     public void myBatisWithDbcpTest(){
 
 
+    }
+
+    /**
+     * 使用存储过程
+     */
+    @Test
+    public void testMybatisCallProcedure(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        Employee emp = new Employee();
+        emp.setId(11007);
+        emp.setName("奇国远");
+        emp.setAge(34);
+        employeeMapper.callProcedureInsertAEmp(emp);
+    }
+
+    /**
+     * 使用函数
+     */
+    @Test
+    public void testMybatisCallFunction(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        Integer i = employeeMapper.callFunctionContEmp(11007);
+        System.out.println(i);
     }
 }

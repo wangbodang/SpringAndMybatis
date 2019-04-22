@@ -162,4 +162,30 @@
     from employee
     where Age = #{age, jdbcType=INTEGER}
   </select>
+
+  <!-- 定义存储过程 -->
+  <!--<select id="callProcedure" parameterType="map" statementType="CALLABLE" >
+      {
+         call prg_add(
+               #{p1,mode=IN,jdbcType=NUMERIC},
+               #{p2,mode=IN,jdbcType=NUMERIC},
+               #{p3,mode=OUT,jdbcType=NUMERIC}
+         )
+      }
+  </select>-->
+  <select id="callProcedureInsertAEmp" parameterType="com.wangbodang.demo.entity.Employee" statementType="CALLABLE">
+      {
+         call prod_insert_a_emp(
+               #{id,mode=IN,jdbcType=INTEGER},
+               #{name,mode=IN,jdbcType=VARCHAR},
+               #{age,mode=IN,jdbcType=INTEGER}
+         )
+      }
+  </select>
+
+  <select id="callFunctionContEmp" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+         select func_cal_emp_counts(
+               #{id,mode=IN,jdbcType=INTEGER}
+         )
+  </select>
 </mapper>

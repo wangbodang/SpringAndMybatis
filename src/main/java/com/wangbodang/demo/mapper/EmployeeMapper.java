@@ -22,4 +22,7 @@ public interface EmployeeMapper {
 
     List<Employee> getEmployeeByAge(Integer age);
 
+    void callProcedureInsertAEmp(Employee emp);
+
+    Integer callFunctionContEmp(Integer id);
 }
