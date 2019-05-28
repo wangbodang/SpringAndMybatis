@@ -28,10 +28,17 @@
       <scope>test</scope>
     </dependency>
       <!-- jdbc -->
+      <!-- 这是5.x版本的Mysql驱动 -->
       <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
           <version>5.1.42</version>
+      </dependency>
+      <!-- 这是8.0版本的Mysql驱动 -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>8.0.13</version>
       </dependency>
       <!-- dbcp -->
       <dependency>
